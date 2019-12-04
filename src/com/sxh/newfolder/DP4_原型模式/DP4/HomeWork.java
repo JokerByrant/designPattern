@@ -4,42 +4,37 @@ import java.io.*;
 import java.util.Date;
 
 /**
+ * 家庭作业
  * @author 一池春水倾半城
- * @date 2019/12/3
+ * @date 2019/12/4
  */
-public class HomeWork implements Cloneable, Serializable{
-    private SubjectType subjectType = SubjectType.WULI;
+public class HomeWork implements Cloneable,Serializable{
+    // 作业属于哪一门课
+    private HomeWorkType type = HomeWorkType.SHUXUE;
 
-    private Integer totalPage = 0;
+    // 有多少页需要做
+    private Integer page;
 
+    // 完成时间
     private Date finishTime;
 
+    // 作业是谁的
     private Student student;
 
-    @Override
-    public String toString() {
-        return "HomeWork{" +
-                "subjectType=" + subjectType +
-                ", totalPage=" + totalPage +
-                ", finishTime=" + finishTime +
-                ", student=" + student +
-                '}';
+    public HomeWorkType getType() {
+        return type;
     }
 
-    public SubjectType getSubjectType() {
-        return subjectType;
+    public void setType(HomeWorkType type) {
+        this.type = type;
     }
 
-    public void setSubjectType(SubjectType subjectType) {
-        this.subjectType = subjectType;
+    public Integer getPage() {
+        return page;
     }
 
-    public Integer getTotalPage() {
-        return totalPage;
-    }
-
-    public void setTotalPage(Integer totalPage) {
-        this.totalPage = totalPage;
+    public void setPage(Integer page) {
+        this.page = page;
     }
 
     public Date getFinishTime() {
@@ -58,8 +53,18 @@ public class HomeWork implements Cloneable, Serializable{
         this.student = student;
     }
 
+    @Override
+    public String toString() {
+        return "HomeWork{" +
+                "type=" + type.getName() +
+                ", page=" + page +
+                ", finishTime=" + finishTime +
+                ", student=" + student +
+                '}';
+    }
+
     /**
-     * 对象浅拷贝 ===> 对象中按值传递的都能完美的拷贝走，但是按引用传递的拷贝不走(指向的地址不变)
+     * 浅克隆，对象中传递值的对象能复制走，但按引用传递的就不行
      * @return
      * @throws CloneNotSupportedException
      */
@@ -69,29 +74,22 @@ public class HomeWork implements Cloneable, Serializable{
     }
 
     /**
-     * 深度拷贝 ===> 对象中不论是值类型还引用类型都一并拷贝走
-     * 对象字节流的序列和反序列化
+     * 深克隆 === 对象中的一切都能完完全全的拷贝走
      * @return
      */
     public HomeWork deepClone() {
-
-        // Anything 都是可以用字节流进行表示，记住是任何！
         HomeWork homeWork = null;
 
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
-            // 将当前对象写入baos【输入流 --- 字节数组】里
             oos.writeObject(this);
 
-            // 从输出字节数组缓冲当前字节流
+            // 从输出字节数组缓冲区拿到字节流
             byte[] bytes = baos.toByteArray();
 
-            // 创建一个输入字节数组缓冲区
             ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-            // 创建一个对象输入流，读取字节数组缓冲区中的数据
             ObjectInputStream ois = new ObjectInputStream(bais);
-            // 反序列化字节流 === 重新开辟一块空间存放反序列化字节流
             homeWork = (HomeWork) ois.readObject();
         } catch (IOException e) {
             e.printStackTrace();
@@ -101,6 +99,4 @@ public class HomeWork implements Cloneable, Serializable{
 
         return homeWork;
     }
-
-
 }

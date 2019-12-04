@@ -2,19 +2,18 @@ package com.sxh.newfolder.DP4_原型模式.DP4;
 
 /**
  * @author 一池春水倾半城
- * @date 2019/12/3
+ * @date 2019/12/4
  */
-public enum SubjectType {
-    WULI("物理",0),
-    YUWEN("语文",1),
-    SHUXUE("数学",2),
-    YINGYU("英语",3),
-    DILI("地理",4);
+public enum HomeWorkType {
+    WULI("物理", 1),
+    HUAXUE("化学", 2),
+    SHUXUE("数学", 3),
+    YINGYU("英语",4);
 
     private String name;
-    private int value;
+    private Integer value;
 
-    SubjectType(String name, int value) {
+    HomeWorkType(String name, Integer value) {
         this.name = name;
         this.value = value;
     }
@@ -23,7 +22,7 @@ public enum SubjectType {
         return name;
     }
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 }
