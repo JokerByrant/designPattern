@@ -17,6 +17,7 @@ public class Singleton1 {
         return  instance;
     }
 
+
     public void show() {
         System.out.println("这是懒汉式单例");
     }
