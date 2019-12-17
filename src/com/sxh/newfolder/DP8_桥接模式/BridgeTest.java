@@ -1,4 +1,4 @@
-package com.sxh.newfolder.DP8_桥接模式.DP_8;
+package com.sxh.newfolder.DP8_桥接模式;
 
 import com.sxh.newfolder.DP8_桥接模式.DP_8.paint.color.Color;
 import com.sxh.newfolder.DP8_桥接模式.DP_8.paint.color.Green;
@@ -22,7 +22,7 @@ public class BridgeTest {
         playMusic();
 
         /**
-         * 作用场景：有两个变化维度的系统，他们之间通过组合形成不同的尸体。
+         * 作用场景：有两个变化维度的系统，他们之间通过组合形成不同的实体。
          * 例如下例：要绘制矩形、圆形，需要两个形状类，但如果要绘制不同颜色，如红色、绿色等，那么此时有两种解决方案：
          *  1. 为每一种形状都提供一个不同颜色的版本
          *  2. 根据实际需要对形状和颜色进行整合
