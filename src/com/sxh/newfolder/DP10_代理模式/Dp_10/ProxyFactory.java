@@ -30,9 +30,21 @@ public class ProxyFactory {
         return new DogProxy();
     }
 
+    /**
+     * 获取动态代理对象
+     * @param target
+     * @return
+     */
     public static Object getDynProxy(Object target) {
         InvocationHandler handler = new DynamicProxy(target);
         // 拿到代理对象
         return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), handler);
     }
+
+    /**
+     * newProxyInstance()方法中的三个对象
+     * @param loader 一个ClassLoader对象，定义了由哪个ClassLoader对象来对生成的代理对象进行加载
+     * @param interfaces 一个Interface对象的数组，表示的是我将要给我需要代理的对象提供一组什么接口，如果我提供了一组接口给它，那么这个代理对象就宣称实现了该接口(多态)，这样我就能调用这组接口中的方法了
+     * @param h 一个InvocationHandler对象，表示的是当我这个动态代理对象在调用方法的时候，会关联到哪一个InvocationHandler对象上
+     */
 }
