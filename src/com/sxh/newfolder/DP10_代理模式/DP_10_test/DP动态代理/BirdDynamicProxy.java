@@ -24,4 +24,17 @@ public class BirdDynamicProxy implements InvocationHandler {
 
         return invoke;
     }
+
+    /**
+     * 封装newProxyInstance
+     * @param target
+     * @return
+     */
+    public Object getProxy(Object target) {
+        Class clazz = object.getClass();
+        ClassLoader classLoader = clazz.getClassLoader();
+        Class[] interfaces = clazz.getInterfaces();
+
+        return Proxy.newProxyInstance(classLoader, interfaces, this);
+    }
 }

@@ -44,7 +44,7 @@ public class ProxyFactory {
     /**
      * newProxyInstance()方法中的三个对象
      * @param loader 一个ClassLoader对象，定义了由哪个ClassLoader对象来对生成的代理对象进行加载
-     * @param interfaces 一个Interface对象的数组，表示的是我将要给我需要代理的对象提供一组什么接口，如果我提供了一组接口给它，那么这个代理对象就宣称实现了该接口(多态)，这样我就能调用这组接口中的方法了
-     * @param h 一个InvocationHandler对象，表示的是当我这个动态代理对象在调用方法的时候，会关联到哪一个InvocationHandler对象上
+     * @param interfaces 一个interface对象数组，表示我们将要给我们的代理对象提供一组什么样的接口，如果我们提供了这样一个接口对象数组，那么也就是声明了代理类实现了这些接口，代理类就可以调用接口中声明的所有方法。
+     * @param h 一个InvocationHandler对象，表示的是当我这个动态代理对象在调用方法的时候，会关联到哪一个InvocationHandler对象上，并最终由其调用。
      */
 }
