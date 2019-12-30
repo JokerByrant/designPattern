@@ -4,6 +4,9 @@ import com.sxh.newfolder.DP13_策略模式.DP_13.公式计算.ICalculator;
 import com.sxh.newfolder.DP13_策略模式.DP_13.公式计算.Minus;
 import com.sxh.newfolder.DP13_策略模式.DP_13.公式计算.Mul;
 import com.sxh.newfolder.DP13_策略模式.DP_13.公式计算.Plus;
+import com.sxh.newfolder.DP13_策略模式.DP_13.商场促销.Dianshang618;
+import com.sxh.newfolder.DP13_策略模式.DP_13.商场促销.PriceContext;
+import com.sxh.newfolder.DP13_策略模式.DP_13.商场促销.Shuang11;
 
 /**
  * 策略模式测试类
@@ -15,6 +18,8 @@ public class StrategyTest {
         plus();
         minus();
         mul();
+        Shaung11();
+        Dianshang618();
     }
 
     private static void plus() {
@@ -49,4 +54,22 @@ public class StrategyTest {
      *
      * 设计模式的学习不是说知道了概念和会敲几个Demo那么简单的，需要深入的理解它们的使用场景和每一个模式之间的区别
      */
+
+    private static void Shaung11() {
+        System.out.println(" ===============天猫双十一大促");
+        double totalPrice = 785.0;
+        System.out.println("商品原价：" + totalPrice + "￥");
+        PriceContext context = new PriceContext(new Shuang11());
+        double discount = context.discount(totalPrice);
+        System.out.println("折后价格：" + discount + "￥");
+    }
+
+    private static void Dianshang618() {
+        System.out.println(" ===============年中618狂欢！");
+        double totalPrice = 1000;
+        System.out.println("商品原价：" + totalPrice + "￥");
+        PriceContext context = new PriceContext(new Dianshang618());
+        double discount = context.discount(totalPrice);
+        System.out.println("折后价格：" + discount + "￥");
+    }
 }
